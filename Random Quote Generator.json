@@ -1,0 +1,22 @@
+[
+    {
+        "id": "4ff26569cd02e41b",
+        "type": "function",
+        "z": "3c0ec96022630823",
+        "name": "Format Quote",
+        "func": "// Check if the response contains data\nif (msg.payload && msg.payload.length > 0) {\n    // Extract quote, author, and category from the response\n    let quote = msg.payload[0].quote;\n    let author = msg.payload[0].author;\n    let category = msg.payload[0].category;  // Assuming category was passed in msg before the API call\n\n    // Format the output for display\n    msg.payload = `\"${quote}\",\"Author:${author}\",\"category:${category}\"`;\n} else {\n    // Handle case where no quote is found\n    msg.payload = \"No quote found for the selected category.\";\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 260,
+        "wires": [
+            [
+                "ui-text-node"
+            ]
+        ]
+    }
+]
